@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101722">
+  <meta name="description" content="An interactive, original 3D anatomy learning demo focused on major muscle groups.">
+  <title>Anatomy Explorer — Muscular System</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Anatomy Explorer home">
+      <span class="brand-mark">A<span>+</span></span>
+      <span><strong>Anatomy Explorer</strong><small>Muscular system · interactive study</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="status-dot"></span><span class="status-label">3D model ready</span>
+      <button id="resetView" class="button secondary">Reset view</button>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="viewer-panel" aria-label="3D anatomy viewer">
+      <div class="viewer-heading">
+        <div><p class="eyebrow">ANATOMICAL ATLAS / 01</p><h1>Explore the muscular system</h1>
+          <p class="subheading">Rotate the model, select a muscle group, and adjust visibility.</p></div>
+        <div class="view-badge">ANTERIOR VIEW</div>
+      </div>
+      <div id="stage" class="stage">
+        <div id="loading" class="loading"><span class="spinner"></span><span>Preparing 3D model…</span></div>
+        <div class="stage-hint"><span>↻</span> Drag to rotate <span>·</span> Scroll to zoom</div>
+        <div id="modelError" class="model-error" hidden>Unable to load the 3D library. Check your connection and refresh.</div>
+      </div>
+      <div class="viewer-footer">
+        <div class="legend"><span class="legend-dot muscle"></span> Muscle groups <span class="legend-dot selected"></span> Selected structure</div>
+        <div class="view-controls"><button class="icon-button" id="frontView" title="Front view" aria-label="Front view">Front</button><button class="icon-button" id="sideView" title="Side view" aria-label="Side view">Side</button><button class="icon-button" id="backView" title="Back view" aria-label="Back view">Back</button></div>
+      </div>
+    </section>
+    <aside class="sidebar">
+      <section class="card selected-card">
+        <div class="section-head"><h2>Selected structure</h2><span class="live-pill">LIVE</span></div>
+        <div class="selected-name" id="selectedName">Pectoralis major</div>
+        <p id="selectedDescription" class="description">A large, fan-shaped muscle of the anterior chest that contributes to shoulder adduction and medial rotation.</p>
+        <div class="detail-grid"><div><span class="detail-label">REGION</span><strong id="selectedRegion">Thorax</strong></div><div><span class="detail-label">SYSTEM</span><strong>Skeletal muscle</strong></div></div>
+      </section>
+      <section class="card">
+        <div class="section-head"><h2>Muscle groups</h2><button id="showAll" class="text-button">Show all</button></div>
+        <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search muscles…" autocomplete="off"></label>
+        <div id="muscleList" class="muscle-list"></div>
+      </section>
+      <section class="card controls-card">
+        <div class="section-head"><h2>Display controls</h2></div>
+        <label class="toggle-row"><span><strong>Muscle colour</strong><small>Use anatomy palette</small></span><input id="colorMode" type="checkbox" checked><span class="switch"></span></label>
+        <label class="toggle-row"><span><strong>Transparency</strong><small>Reveal overlapping forms</small></span><input id="transparentMode" type="checkbox"><span class="switch"></span></label>
+        <label class="range-label" for="opacity"><span>Model opacity</span><output id="opacityValue">100%</output></label>
+        <input id="opacity" class="range" type="range" min="25" max="100" value="100">
+        <button id="isolate" class="button secondary full">Isolate selected muscle</button>
+      </section>
+      <p class="disclaimer">Educational visualization, not a clinical reference. This original stylized model is illustrative and does not represent anatomical proportions or attachments with medical-grade accuracy.</p>
+    </aside>
+  </main>
+  <footer class="site-footer"><span>ANATOMY EXPLORER</span><span>Original procedural 3D demo · Built for learning</span><a href="https://github.com/" target="_blank" rel="noreferrer">Publish with GitHub Pages ↗</a></footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
